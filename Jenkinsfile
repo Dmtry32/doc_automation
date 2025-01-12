@@ -1,5 +1,8 @@
 pipeline {
     agent { label 'Linux' }
+    options {
+      disableConcurrentBuilds()
+    }
     stages {
         stage('Get Hostname') {
             steps {
