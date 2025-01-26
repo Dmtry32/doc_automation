@@ -1,0 +1,15 @@
+{
+  "name": "node_app",
+  "version": "1.0.0",
+  "description": "Node.js application with MySQL",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "sequelize": "^6.32.1",
+    "mysql2": "^3.4.0",
+    "dotenv": "^16.1.4"
+  }
+}

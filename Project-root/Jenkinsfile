@@ -1,0 +1,24 @@
+pipeline {
+    agent { label 'master' } // Run Ansible on Jenkins master
+    environment {
+        INVENTORY = "${env.WORKSPACE}/ansible/inventory"
+        PLAYBOOK = "${env.WORKSPACE}/ansible/deploy.yml"
+        ANSIBLE_BIN = '/usr/bin/ansible-playbook' // Adjust if necessary
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout source code
+                checkout scm
+            }
+        }
+        stage('Run Ansible Playbook') {
+            steps {
+                echo "Running Ansible Playbook"
+                sh """
+                ${ANSIBLE_BIN} -i ${INVENTORY} ${PLAYBOOK}
+                """
+            }
+        }
+    }
+}

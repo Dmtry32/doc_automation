@@ -1,0 +1,17 @@
+---
+- name: Copy application files
+  copy:
+    src: "{{ item }}"
+    dest: /home/user/app/
+  with_items:
+    - Dockerfile
+    - docker-compose.yml
+    - src/
+    - backup/
+    - .env
+
+- name: Bring up the application with Docker Compose
+  shell: |
+    cd /home/user/app/
+    docker-compose down
+    docker-compose up -d
